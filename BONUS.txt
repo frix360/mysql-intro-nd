@@ -1,0 +1,28 @@
+SELECT                 # Nieko geriau nepavyko sugalvot, bet atrodo, kad sitas veikia                       
+   News.newsId,
+   News.date as 'newsDate',
+   News.text as 'newsText',
+   (
+      SELECT
+         Comments.date 
+      FROM
+         Comments 
+      WHERE
+         Comments.newsId = News.newsId 
+      ORDER BY
+         Comments.date DESC LIMIT 1
+   )
+   as 'commentDate',
+   (
+      SELECT
+         Comments.text 
+      FROM
+         Comments 
+      WHERE
+         Comments.newsId = News.newsId 
+      ORDER BY
+         Comments.date DESC LIMIT 1
+   )
+   as 'commentText' 
+FROM
+   News LIMIT 10;
