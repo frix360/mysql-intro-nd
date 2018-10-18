@@ -1,0 +1,30 @@
+SELECT                 # Itraukiant autorius kurie neturi knygu
+   Authors.authorId,
+   Authors.name,
+   COUNT(Books.bookId) 
+FROM
+   `Authors` 
+   LEFT JOIN
+      `Books` 
+      ON Authors.authorId = Books.authorId 
+GROUP BY
+   Authors.authorId;
+
+# -------------------------------------------------------------------------------------------
+
+
+SELECT                 # Itraukiant tik tuos autorius, kurie turi knygas
+   Authors.authorId,
+   Authors.name,
+   COUNT(Books.bookId) 
+FROM
+   `Authors` 
+   INNER JOIN
+      `Books` 
+      ON Authors.authorId = Books.authorId 
+GROUP BY
+   Authors.authorId;
+
+# --------------------------------------------------------------------------------------------
+
+DELETE FROM `Authors` WHERE NOT EXISTS (SELECT * FROM `Books` WHERE Books.authorId = Authors.authorId ); # Trinam autorius, kurie neturi knygu

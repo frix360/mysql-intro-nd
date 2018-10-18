@@ -1,0 +1,5 @@
+SELECT * from Books
+
+SELECT * from Books ORDER BY title asc
+
+SELECT authorId, count(*) from Books GROUP BY authorId

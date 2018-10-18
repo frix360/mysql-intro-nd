@@ -1,0 +1,11 @@
+ALTER TABLE Books DROP COLUMN authorId; 
+
+CREATE TABLE Authors_Books ( # Sukuriam pivot lentele
+    authorId INT,
+    bookId INT
+);
+
+
+ALTER TABLE Books CONVERT TO CHARACTER SET utf8; # lt simboliu palaikymas
+
+ALTER TABLE Authors CONVERT TO CHARACTER SET utf8; 

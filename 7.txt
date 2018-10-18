@@ -1,0 +1,24 @@
+CREATE TABLE Authors_Books ( # Sukuriam pivot lentele
+    authorId INT,
+    bookId INT
+);
+
+INSERT INTO Authors_Books VALUES (1, 1), (4, 1), (4, 2), (4, 3), (6, 4), (7, 5) # Idedam naujas reiksmes
+
+SELECT
+   GROUP_CONCAT(Authors.name SEPARATOR ', ') AS `authors`,
+   Books.title 
+FROM
+   Authors_Books 
+   INNER JOIN
+      Books 
+      ON Authors_Books.bookId = Books.bookId 
+   INNER JOIN
+      Authors 
+      ON Authors_Books.authorId = Authors.authorId 
+GROUP BY
+   Books.title; # Isrenkam visas knygas su autoriais
+
+ALTER TABLE Books CONVERT TO CHARACTER SET utf8 # lt simboliu palaikymas
+
+ALTER TABLE Authors CONVERT TO CHARACTER SET utf8 

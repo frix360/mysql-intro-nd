@@ -1,0 +1,5 @@
+INSERT INTO Authors (name) VALUES ("Thomas Hardy"), ("Doris Lessing"); # 1
+
+INSERT INTO Books (`authorId`, `title`, `year`) VALUES (8, "The Fifth Child", 1988), (8, "Memoirs of a Survivor", 1974), (9, "Jude the Obscure", 1995); # 2
+
+UPDATE Books SET authorId = 4 WHERE bookId = 2; # 3

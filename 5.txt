@@ -1,0 +1,1 @@
+SELECT bookId, authorId as 'authorId/name' FROM Books UNION SELECT authorId, name FROM Authors;
